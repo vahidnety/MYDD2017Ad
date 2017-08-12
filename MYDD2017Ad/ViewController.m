@@ -17,12 +17,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSString *post = [NSString stringWithFormat:@"http://192.168.2.9:8080/ad?id=1"];
+    NSString *post = [NSString stringWithFormat:@"http://192.168.2.9:8080/adv?id=1"];
     NSURL *tutorialsUrl = [NSURL URLWithString:post];
     NSData *tutorialsHtmlData = [NSData dataWithContentsOfURL:tutorialsUrl];
     NSString *strData = [[NSString alloc]initWithData:tutorialsHtmlData encoding:NSUTF8StringEncoding];
     NSLog(@"strData=%@",strData);
-    self.img.image=[UIImage imageNamed:@"pizzaAd.jpg"];
+    strData=[strData stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    strData=[strData stringByReplacingOccurrencesOfString:@"{" withString:@""];
+    strData=[strData stringByReplacingOccurrencesOfString:@"}" withString:@""];
+    NSArray *arrData=[strData componentsSeparatedByString:@":"];
+    NSString *str=[arrData objectAtIndex:1];
+    if([str isEqualToString:@"1"])
+        self.img.image=[UIImage imageNamed:@"pizzaAd.jpg"];
+    else if([str isEqualToString:@"2"])
+        self.img.image=[UIImage imageNamed:@"mangoAd.jpg"];
+    else
+        self.img.image=[UIImage imageNamed:@"watchAd.jpg"];
+
 }
 
 
