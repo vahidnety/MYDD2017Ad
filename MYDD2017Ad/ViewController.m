@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib. 
+    // Do any additional setup after loading the view, typically from a nib.
+    NSString *post = [NSString stringWithFormat:@"http://192.168.2.9:8080/ad?id=1"];
+    NSURL *tutorialsUrl = [NSURL URLWithString:post];
+    NSData *tutorialsHtmlData = [NSData dataWithContentsOfURL:tutorialsUrl];
+    NSString *strData = [[NSString alloc]initWithData:tutorialsHtmlData encoding:NSUTF8StringEncoding];
+    NSLog(@"strData=%@",strData);
+
 }
 
 
