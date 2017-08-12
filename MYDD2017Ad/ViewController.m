@@ -22,7 +22,7 @@
     NSData *tutorialsHtmlData = [NSData dataWithContentsOfURL:tutorialsUrl];
     NSString *strData = [[NSString alloc]initWithData:tutorialsHtmlData encoding:NSUTF8StringEncoding];
     NSLog(@"strData=%@",strData);
-
+    self.img.image=[UIImage imageNamed:@"pizzaAd.jpg"];
 }
 
 
